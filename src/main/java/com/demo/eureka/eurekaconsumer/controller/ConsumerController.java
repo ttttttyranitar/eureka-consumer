@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +47,6 @@ public class ConsumerController {
             return instance.getUri();
         }).collect(Collectors.toList());
 
-        System.out.println(uriList);
         return uriList ;
     }
 
@@ -61,8 +61,6 @@ public class ConsumerController {
             if (InstanceInfo.InstanceStatus.UP==instanceInfo.getStatus()){
 
                 String url="http://"+"localhost:"+instanceInfo.getPort()+"/hello";
-                System.out.println("use service instance : "+url);
-
                 RestTemplate restTemplate = restTemplateBuilder.build();
                 res = restTemplate.getForObject(url, String.class);
                 break;
@@ -78,8 +76,7 @@ public class ConsumerController {
 
         String url="http://"+"localhost:"+instance.getPort()+"/hello";
 
-        String res = restTemplateBuilder.build().getForObject(url, String.class);
-        System.out.println(url);
-        return res;
+        return   restTemplateBuilder.build().getForObject(url, String.class);
+
     }
 }

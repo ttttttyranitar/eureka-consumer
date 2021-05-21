@@ -14,13 +14,12 @@ package com.demo.eureka.eurekaconsumer.config;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RoundRobinRule;
-import io.netty.handler.ipfilter.IpFilterRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Random;
+
 
 @Configuration
 public class RibbonConfig {
@@ -36,6 +35,7 @@ public class RibbonConfig {
 
         return new RestTemplate();
     }
+
 
     /**
      * 配置负载均衡算法，采用轮询方式
