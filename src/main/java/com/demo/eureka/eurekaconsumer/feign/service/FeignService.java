@@ -1,5 +1,6 @@
 package com.demo.eureka.eurekaconsumer.feign.service;
 
+import com.demo.eureka.eurekaconsumer.entity.Person;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,9 @@ import java.util.Map;
 @FeignClient("helloMS")
 public interface FeignService {
 
+    @PostMapping("/alive")
+    public String alive();
+
     @GetMapping("/hello")
     public Object hello();
 
@@ -28,5 +32,8 @@ public interface FeignService {
 
 
     @GetMapping ("/helloWithMap")
-    public String helloWithMap(@RequestParam Map<String,String> map);
+    public Map<String,String> helloWithMap(@RequestParam Map<String,String> map);
+
+    @PostMapping("/helloByObject")
+    public String helloByObject(@RequestBody Person person);
 }

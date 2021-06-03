@@ -69,6 +69,7 @@ public class ConsumerController {
         return res;
     }
 
+
     @GetMapping("/hello2")
     public String hello2(){
 
@@ -77,6 +78,5 @@ public class ConsumerController {
         String url="http://"+"localhost:"+instance.getPort()+"/hello";
 
         return   restTemplateBuilder.build().getForObject(url, String.class);
-
     }
 }
