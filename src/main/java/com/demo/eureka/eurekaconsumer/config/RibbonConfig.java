@@ -31,7 +31,8 @@ public class RibbonConfig {
      * */
     @Bean
     @LoadBalanced
-    public RestTemplate getTemplate(){
+    public RestTemplate restTemplate(){
+
 
         return new RestTemplate();
     }
@@ -43,7 +44,7 @@ public class RibbonConfig {
      *
      * **/
     @Bean
-    public IRule getLoadBalanceRule(){
+    public IRule ribbonRule(){
 
         return new RoundRobinRule();
     }
